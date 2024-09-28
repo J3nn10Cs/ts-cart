@@ -1,10 +1,12 @@
-import type { MenuItem } from "../types"
+import { MenuItem } from "../types"
 
 type MenuItemProps = {
-  item: MenuItem
+  item: MenuItem,
+  //prop de agregar un menú -> void funcion que no retorna nada
+  addItem: (item : MenuItem) => void
 }
 
-export default function MenuItem ({item} : MenuItemProps){
+export default function Menu ({item, addItem} : MenuItemProps){
   return (
     <>
       <div className="rounded-lg bg-white shadow-xl">
@@ -20,7 +22,10 @@ export default function MenuItem ({item} : MenuItemProps){
               -
             </button>
             0
-            <button className="bg-blue-400 hover:text-white font-extrabold rounded-full px-3 py-1 text-base">
+            <button 
+              className="bg-blue-400 hover:text-white font-extrabold rounded-full px-3 py-1 text-base"
+              onClick={() => addItem(item)}
+            >
               +
             </button>
           </div>
