@@ -4,9 +4,10 @@ type MenuItemProps = {
   item: MenuItem,
   //prop de agregar un menú -> void funcion que no retorna nada
   addItem: (item : MenuItem) => void
+  reduce: (id: MenuItem) => void
 }
 
-export default function Menu ({item, addItem} : MenuItemProps){
+export default function Menu ({item, addItem,reduce} : MenuItemProps){
   return (
     <>
       <div className="rounded-lg bg-white shadow-xl">
@@ -18,7 +19,9 @@ export default function Menu ({item, addItem} : MenuItemProps){
           <p className="font-bold text-3xl lg:mb-0 ">$ {item.price}</p>
 
           <div className="flex justify-between items-center border border-gray-200 p-2 rounded-full mt-2 lg:mt-0">
-            <button className="hover:bg-blue-400 hover:text-white font-extrabold rounded-full px-3 py-1 text-base">
+            <button className="hover:bg-blue-400 hover:text-white font-extrabold rounded-full px-3 py-1 text-base"
+              onClick={() => reduce(item)}
+            >
               -
             </button>
             0
