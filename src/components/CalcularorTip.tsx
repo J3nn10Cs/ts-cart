@@ -25,8 +25,8 @@ type TipProps = {
 export default function CalcularorTip({setTip,tip} : TipProps) {
   return (
     <>
-      <div className="bg-slate-100 p-3 rounded-3xl">
-        <h1 className="text-2xl">Tip :</h1>
+      <div className="bg-slate-100 p-3 rounded-3xl  shadow-sm dark:bg-stone-900 dark:shadow-neutral-50">
+        <h1 className="text-2xl dark:text-white">Tip :</h1>
 
         <div className="p-3 divide-y divide-slate-300">
           {tipOptions.map(tipOrder =>(
@@ -45,7 +45,9 @@ export default function CalcularorTip({setTip,tip} : TipProps) {
                 checked={tipOrder.value === tip}
               />
               <label 
-                htmlFor="tip">{
+                htmlFor="tip"
+                className="dark:text-white"
+                >{
                   tipOrder.label}
               </label>
             </div>

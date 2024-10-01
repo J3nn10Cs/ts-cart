@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/calcularortip.tsx","./src/components/menu.tsx","./src/components/ordercontest.tsx","./src/components/ordertotal.tsx","./src/components/slider.tsx","./src/data/db.ts","./src/helpers/index.ts","./src/hooks/useorders.ts","./src/types/index.ts"],"version":"5.6.2"}

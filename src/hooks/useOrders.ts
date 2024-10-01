@@ -56,6 +56,11 @@ export default function useOrder() {
     setOrder(order.filter(menu => menu.id !== id))
   }
 
+  const getQuantity = (item: MenuItem) => {
+    const orderItem = order.find(orderItem => orderItem.id === item.id);
+    return orderItem ? orderItem.quantity : 0; // Devuelve 0 si no existe en la orden
+};
+
   const saveOrder = () => {
     setOrder([])
     setTip(0)
@@ -69,6 +74,7 @@ export default function useOrder() {
     removeOrder,
     reduce,
     initialOrder,
-    saveOrder
+    saveOrder,
+    getQuantity
   }
 }

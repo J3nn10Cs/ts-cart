@@ -24,26 +24,26 @@ export default function OrderTotal({order, tip, saveOrder}: TotalProp){
 
   return (
     <>
-      <div className="bg-slate-100 rounded-3xl p-3 mt-3">
-        <h1 className="font-bold mb-2">Payment summary</h1>
+      <div className="bg-slate-100 rounded-3xl p-3 mt-3 shadow-sm dark:bg-stone-900 dark:shadow-neutral-50">
+        <h1 className="font-bold mb-2 dark:text-white">Payment summary</h1>
         <div className="divide-y divide-slate-300">
           <div className="flex justify-between p-3">
-            <h1>Sub total</h1>
-            <h1>{formatCurrency(orderSubTotal)}</h1>
+            <h1 className="dark:text-white">Sub total</h1>
+            <h1 className="dark:text-white">{formatCurrency(orderSubTotal)}</h1>
           </div>
           <div className="flex justify-between p-3">
-            <h1>Tip</h1>
-            <h1>{formatCurrency(tipOrder)}</h1>
+            <h1 className="dark:text-white">Tip</h1>
+            <h1 className="dark:text-white">{formatCurrency(tipOrder)}</h1>
           </div>
         </div>
 
         <div className="flex justify-between p-3">
-          <h1 className="font-bold">Totall</h1>
-          <h1 className="font-bold">{formatCurrency(totalPay)}</h1>
+          <h1 className="font-bold dark:text-white">Totall</h1>
+          <h1 className="font-bold dark:text-white">{formatCurrency(totalPay)}</h1>
         </div>
 
       </div>
-        <button className="w-full bg-blue-500 p-3 disabled:opacity-10 rounded-3xl hover:bg-blue-700 mt-3"
+        <button className="w-full bg-blue-500 p-3 disabled:opacity-10 rounded-3xl hover:bg-blue-700 mt-3 dark:text-white"
           disabled={totalPay===0}
           onClick={saveOrder}
         >
