@@ -1,14 +1,15 @@
-import { useMemo } from "react"
+import { useMemo, Dispatch } from "react"
 import { OrderItem } from "../types"
 import { formatCurrency } from "../helpers"
+import { OrderAction } from "../reducers/orderReducer"
 
 type TotalProp = {
   order: OrderItem[]
   tip: number
-  saveOrder: () => void
+  dispatch: Dispatch<OrderAction>
 }
 
-export default function OrderTotal({order, tip, saveOrder}: TotalProp){
+export default function OrderTotal({order, tip, dispatch}: TotalProp){
   //evitar que el cálculo del total de la orden se repita en cada renderizado.
   //reduce -> reducir el array a un único valor (en este caso, el total de la orden).
   //-> total: El acumulador que se actualiza en cada iteración con el total calculado hasta el momento.
@@ -45,7 +46,7 @@ export default function OrderTotal({order, tip, saveOrder}: TotalProp){
       </div>
         <button className="w-full bg-blue-500 p-3 disabled:opacity-10 rounded-3xl hover:bg-blue-700 mt-3 dark:text-white"
           disabled={totalPay===0}
-          onClick={saveOrder}
+          onClick={() => dispatch({type : 'save-order'}) }
         >
           Save Order
         </button>

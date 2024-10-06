@@ -1,11 +1,13 @@
 import { formatCurrency } from "../helpers"
+import { OrderAction } from "../reducers/orderReducer"
 import { OrderItem } from "../types"
+import { Dispatch } from "react"
 
 type OrderContestProp = {
   order: OrderItem[]
-  removeOrder : (id: OrderItem['id']) => void
+  dispatch: Dispatch<OrderAction>
 }
-export const OrderContest = ({order, removeOrder} : OrderContestProp) => {
+export const OrderContest = ({order, dispatch} : OrderContestProp) => {
   
   return (
     <>
@@ -20,7 +22,7 @@ export const OrderContest = ({order, removeOrder} : OrderContestProp) => {
             <p className="dark:text-white">{item.name}</p>
             <p className="font-bold dark:text-white">{formatCurrency(item.price * item.quantity)}</p>
             <button
-                onClick={() => removeOrder(item.id)}
+                onClick={() => dispatch({type: 'remove-order-id', paylod : {id : item.id}})}
               >
               <i className="fa-solid fa-xmark p-2 bg-red-400 rounded-full"></i>
             </button>

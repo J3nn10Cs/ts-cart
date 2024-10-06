@@ -1,4 +1,5 @@
-import { Dispatch,SetStateAction } from "react"
+import { Dispatch } from "react"
+import { OrderAction } from "../reducers/orderReducer"
 const tipOptions = [
   {
     id: 'tip-10',
@@ -18,14 +19,14 @@ const tipOptions = [
 ]
 
 type TipProps = {
-  setTip: Dispatch<SetStateAction<number>>
+  dispatch: Dispatch<OrderAction>
   tip: number
 }
 
-export default function CalcularorTip({setTip,tip} : TipProps) {
+export default function CalcularorTip({dispatch,tip} : TipProps) {
   return (
     <>
-      <div className="bg-slate-100 p-3 rounded-3xl  shadow-sm dark:bg-stone-900 dark:shadow-neutral-50">
+      <div className="bg-slate-100 p-3 rounded-3xl shadow-sm dark:bg-stone-900 dark:shadow-neutral-50">
         <h1 className="text-2xl dark:text-white">Tip :</h1>
 
         <div className="p-3 divide-y divide-slate-300">
@@ -40,7 +41,7 @@ export default function CalcularorTip({setTip,tip} : TipProps) {
                 name="tip"
                 value={tipOrder.value}
                 //el "+" lo convierte a number
-                onChange={(e) =>setTip(+e.target.value)}
+                onChange={(e) => dispatch({type : 'add-tip', payload : {value : +e.target.value}})}
                 //
                 checked={tipOrder.value === tip}
               />

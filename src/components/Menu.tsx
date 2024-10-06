@@ -1,13 +1,13 @@
+import { OrderAction } from "../reducers/orderReducer"
 import { MenuItem } from "../types"
-
+import { Dispatch } from "react"
 type MenuItemProps = {
   item: MenuItem,
   //prop de agregar un menú -> void funcion que no retorna nada
-  addItem: (item : MenuItem) => void
-  reduce: (id: MenuItem) => void
+  dispatch: Dispatch<OrderAction>
 }
 
-export default function Menu ({item, addItem,reduce} : MenuItemProps){
+export default function Menu ({item, dispatch} : MenuItemProps){
   return (
     <>
       <div className="rounded-lg bg-white shadow-xl dark:bg-zinc-900 dark:shadow-neutral-900">
@@ -20,14 +20,14 @@ export default function Menu ({item, addItem,reduce} : MenuItemProps){
 
           <div className="flex justify-between items-center border border-gray-200 p-2 rounded-full mt-2 lg:mt-0">
             <button className="hover:bg-blue-400 hover:text-white font-extrabold rounded-full px-3 py-1 text-base dark:text-white"
-              onClick={() => reduce(item)}
+              onClick={() => dispatch({type : 'decrement-item', paylod : {item}})}
             >
               -
             </button>
             0
             <button 
               className="bg-blue-400 hover:text-white font-extrabold rounded-full px-3 py-1 text-base dark:text-white"
-              onClick={() => addItem(item)}
+              onClick={() => dispatch({type: 'add-item' , paylod: {item}})}
             >
               +
             </button>
